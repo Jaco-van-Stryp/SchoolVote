@@ -1,0 +1,50 @@
+{
+  "Project": {
+    "Name": "SchoolVote",
+    "OutputDirectory": "C:\\Users\\jacov\\source\\repos\\SchoolVote",
+    "UseSrcFolder": true
+  },
+  "Backend": {
+    "Architecture": "VerticalSlice",
+    "ApiStyle": "MinimalApis"
+  },
+  "Database": {
+    "UseEfCore": true,
+    "Provider": "PostgreSQL",
+    "AuditFields": false,
+    "SoftDelete": false
+  },
+  "Auth": {
+    "Kind": "JwtBearer",
+    "RefreshTokens": false,
+    "RoleBasedAuth": false,
+    "CurrentUserService": true
+  },
+  "Packages": {
+    "MediatR": true,
+    "FluentValidation": true,
+    "Mapper": null,
+    "Serilog": true,
+    "Hangfire": false,
+    "Redis": false,
+    "OpenApi": "Swashbuckle",
+    "HealthChecks": false,
+    "Cors": true,
+    "RateLimiting": false,
+    "Docker": true,
+    "AnthropicSdk": false
+  },
+  "Frontend": {
+    "Css": "Tailwind",
+    "UiLibrary": "PrimeNG",
+    "StateManagement": "Signals",
+    "StandaloneComponents": true
+  },
+  "DevTooling": {
+    "GitInit": true,
+    "ClaudeMd": true,
+    "EditorConfig": true,
+    "VsCodeSettings": true,
+    "DockerCompose": true
+  }
+}

@@ -1,0 +1,6 @@
+namespace SchoolVote.API.Common.Settings;
+
+public class CorsSettings
+{
+    public string[] AllowedOrigins { get; set; } = [];
+}
