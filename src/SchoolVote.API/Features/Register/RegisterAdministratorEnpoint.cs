@@ -1,5 +1,6 @@
 using System;
 using SchoolVote.API.Features.Register.RegisterAdministrator;
+using SchoolVote.API.Features.Register.RegisterVoter;
 
 namespace SchoolVote.API.Features.Register;
 
@@ -9,6 +10,7 @@ public static class RegisterAdministratorEndpoint
     {
         var group = app.MapGroup("/Register").WithName("Register");
         group.MapRegisterAdministratorEnpoint();
+        group.MapRegisterVoterEndpoint();
         return app;
     }
 }

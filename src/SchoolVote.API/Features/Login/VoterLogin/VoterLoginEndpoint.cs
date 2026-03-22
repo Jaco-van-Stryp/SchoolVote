@@ -9,7 +9,7 @@ public static class VoterLoginEndpoint
     {
         app.MapPost("VoterLogin", async (VoterLoginCommand command, ISender sender) =>
         {
-            var response = sender.Send(command);
+            var response = await sender.Send(command);
             return TypedResults.Ok(response);
         }).WithName("VoterLogin");
         return app;

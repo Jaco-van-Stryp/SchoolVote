@@ -9,7 +9,7 @@ public static class RegisterAdministratorEndpoint
     {
         app.MapPost("RegisterAdministrator", async (RegisterAdministratorCommand command, ISender sender) =>
         {
-            var response = sender.Send(command);
+            var response = await sender.Send(command);
             return TypedResults.Ok(response);
         }).WithName("RegisterAdministrator");
         return app;
