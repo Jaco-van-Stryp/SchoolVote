@@ -1,5 +1,6 @@
 using System.Reflection;
 using SchoolVote.API.Common.Abstractions;
+using SchoolVote.API.Features.Login;
 
 namespace SchoolVote.API.Common.Extensions;
 
@@ -16,18 +17,5 @@ public static class EndpointExtensions
         }
 
         return services;
-    }
-
-    public static WebApplication MapEndpoints(this WebApplication app, RouteGroupBuilder? routeGroupBuilder = null)
-    {
-        var endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
-        IEndpointRouteBuilder builder = routeGroupBuilder is not null ? routeGroupBuilder : app;
-
-        foreach (var endpoint in endpoints)
-        {
-            endpoint.MapEndpoint(builder);
-        }
-
-        return app;
     }
 }

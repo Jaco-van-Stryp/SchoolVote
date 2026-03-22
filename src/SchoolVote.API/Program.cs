@@ -1,5 +1,6 @@
 using Serilog;
 using SchoolVote.API.Common.Extensions;
+using SchoolVote.API.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,7 @@ app.UseExceptionHandling()
    .UseAuthentication()
    .UseAuthorization();
 
-app.MapEndpoints();
+app.MapAllEndpoints();
 app.UseOpenApiDocs();
 
 app.Run();
