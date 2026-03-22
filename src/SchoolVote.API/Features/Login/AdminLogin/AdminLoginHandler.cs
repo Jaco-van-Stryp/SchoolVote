@@ -11,7 +11,7 @@ public class AdminLoginHandler(ApplicationDbContext context, IJwtService jwtServ
 {
     public async Task<AdminLoginResponse> Handle(AdminLoginCommand request, CancellationToken cancellationToken)
     {
-        var user = await context.Administrators.FirstOrDefaultAsync(x => x.Username.ToLower() == request.Username.ToLower());
+        var user = await context.Administrators.FirstOrDefaultAsync(x => x.Username.ToLower() == request.Username.ToLower(), cancellationToken);
         if (user == null)
             throw new UserNotFoundException("User not found");
         if (user.Password != request.Password)

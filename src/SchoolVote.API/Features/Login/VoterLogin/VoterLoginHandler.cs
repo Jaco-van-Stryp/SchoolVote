@@ -11,7 +11,7 @@ public class VoterLoginHandler(ApplicationDbContext context, IJwtService jwtServ
 {
     public async Task<VoterLoginResponse> Handle(VoterLoginCommand request, CancellationToken cancellationToken)
     {
-        var voter = await context.Voters.FirstOrDefaultAsync(x => x.Id == request.UserID);
+        var voter = await context.Voters.FirstOrDefaultAsync(x => x.Id == request.UserID, cancellationToken);
         if (voter == null)
             throw new UserNotFoundException("Voter Not Found");
         if (voter.AuthKey.ToLower() != request.UserAuthKey.ToLower() || voter.AuthName != request.UserName || voter.Voted)

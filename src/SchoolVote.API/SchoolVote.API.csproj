@@ -29,6 +29,7 @@
     <Folder Include="Common\Entities\" />
     <Folder Include="Common\Exceptions\" />
     <Folder Include="Features\Login\VoterLogin\" />
+    <Folder Include="Features\Register\RegisterAdministrator\" />
   </ItemGroup>
 
 </Project>
