@@ -1,0 +1,5 @@
+2026-03-22 18:04:18.328 +13:00 [INF] User profile is available. Using 'C:\Users\jacov\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-22 18:04:18.439 +13:00 [INF] Now listening on: http://localhost:5020
+2026-03-22 18:04:18.441 +13:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-22 18:04:18.441 +13:00 [INF] Hosting environment: Development
+2026-03-22 18:04:18.442 +13:00 [INF] Content root path: C:\Users\jacov\source\repos\SchoolVote\src\SchoolVote.API
