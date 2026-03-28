@@ -24,6 +24,7 @@ export class Dashboard implements OnInit {
   }
 
   onSessionSelected(session: CreateSessionResponse) {
-    console.log('Selected session:', session);
+    localStorage.setItem('active_session_id', session.sessionId ?? '');
+    localStorage.setItem('active_session_name', session.sessionName ?? '');
   }
 }
