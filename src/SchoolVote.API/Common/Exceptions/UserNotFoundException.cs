@@ -1,10 +1,3 @@
-using System;
-
 namespace SchoolVote.API.Common.Exceptions;
 
-public class UserNotFoundException : Exception
-{
-    public UserNotFoundException(string message)
-        : base(message)
-    { }
-}
+public class UserNotFoundException(string message) : NotFoundException(message);
