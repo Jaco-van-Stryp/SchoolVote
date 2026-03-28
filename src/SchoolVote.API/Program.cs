@@ -25,3 +25,6 @@ app.MapAllEndpoints();
 app.UseOpenApiDocs();
 
 app.Run();
+
+// Bad
+// Fl

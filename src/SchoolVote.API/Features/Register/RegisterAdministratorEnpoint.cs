@@ -8,7 +8,7 @@ public static class RegisterAdministratorEndpoint
 {
     public static IEndpointRouteBuilder MapRegisterEndpoints(this IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup("/Register").WithName("Register");
+        var group = app.MapGroup("/Register").WithTags("Register");
         group.MapRegisterAdministratorEnpoint();
         group.MapRegisterVoterEndpoint();
         return app;

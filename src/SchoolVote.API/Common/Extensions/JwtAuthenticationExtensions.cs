@@ -33,7 +33,11 @@ public static class JwtAuthenticationExtensions
                 };
             });
 
-        services.AddAuthorization();
+        services.AddAuthorization(opts =>
+        {
+            opts.AddPolicy("Administrator", p => p.RequireRole("Administrator"));
+            opts.AddPolicy("Voter", p => p.RequireRole("Voter"));
+        });
 
         services.AddScoped<ICurrentUserService, CurrentUserService>();
         services.AddScoped<IJwtService, JwtService>();

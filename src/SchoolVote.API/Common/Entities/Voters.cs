@@ -13,4 +13,6 @@ public class Voters
     public required int MaleVotes { get; set; } = 0;
     public required int FemaleVotes { get; set; } = 0;
     public ICollection<VotersCasted> VotersCasted { get; set; } = new List<VotersCasted>();
+    public Guid VotingSessionId { get; set; }
+    public VotingSessions VotingSession { get; set; } = null!;
 }

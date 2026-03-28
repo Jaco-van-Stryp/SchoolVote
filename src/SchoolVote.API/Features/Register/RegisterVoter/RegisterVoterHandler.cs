@@ -12,19 +12,21 @@ public class RegisterVoterHandler(ApplicationDbContext context) : IRequestHandle
 {
     public async Task<RegisterVoterResponse> Handle(RegisterVoterCommand request, CancellationToken cancellationToken)
     {
-        var sessionVoters = await context.VotingSessions.FirstOrDefaultAsync(x => x.Id == request.SessionId);
+        var sessionVoters = await context.VotingSessions.Include(x => x.Voters).FirstOrDefaultAsync(x => x.Id == request.SessionId, cancellationToken);
         if (sessionVoters == null) throw new UserNotFoundException("Session not found");
         var voterAuthKey = GenerateVoterAuthKey(7);
         var newVoter = new Voters
         {
+            Id = Guid.NewGuid(),
             AuthKey = voterAuthKey,
             AuthName = request.Name,
             AuthorizedGrade = request.Grade,
             FemaleVotes = request.MaxFemaleVotes,
             MaleVotes = request.MaxMaleVotes,
             Voted = false,
+            VotingSessionId = request.SessionId,
         };
-        sessionVoters.Voters.Add(newVoter);
+        context.Voters.Add(newVoter);
         await context.SaveChangesAsync();
         var res = new RegisterVoterResponse(Id: newVoter.Id, AuthKey: voterAuthKey, request.Name, request.MaxFemaleVotes, request.MaxMaleVotes, request.Grade);
         return res;
@@ -35,7 +37,7 @@ public class RegisterVoterHandler(ApplicationDbContext context) : IRequestHandle
         char[] letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
         Random random = new Random();
         string key = "";
-        for (int i = 0; i >= length; i++)
+        for (int i = 0; i <= length; i++)
         {
             var randomNumber = random.Next(0, 25);
             key += letters[randomNumber];
