@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
-import { AdminLoginCommand, AdminLoginResponse, LoginService } from '../../api';
+import { AdminLoginCommand, AdminLoginResponse, LoginService, RegisterService } from '../../api';
 import { ButtonModule } from 'primeng/button';
+import { Router } from '@angular/router';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-login-component',
@@ -13,7 +14,9 @@ import { ButtonModule } from 'primeng/button';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+
   loginService = inject(LoginService);
+  routerService = inject(Router);
 
   onLogin() {
     var adminUser: AdminLoginCommand = {
@@ -21,7 +24,12 @@ export class LoginComponent {
       password: this.password,
     };
     this.loginService.adminLogin(adminUser).subscribe((res: AdminLoginResponse) => {
-      console.log(res.jwt);
+      localStorage.setItem('auth_token', res.jwt ?? '');
+      this.routerService.navigate(['/Dashboard']);
     });
+  }
+
+  navRegister() {
+    this.routerService.navigate(['/Register']);
   }
 }

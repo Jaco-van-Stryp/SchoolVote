@@ -1,0 +1,8 @@
+<div class="card flex justify-center">
+  <p-select
+    [options]="sessions().sessions ?? []"
+    optionLabel="sessionName"
+    placeholder="Select a session"
+    (onChange)="onSessionSelected($event.value)"
+  />
+</div>
