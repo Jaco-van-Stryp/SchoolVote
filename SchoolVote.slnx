@@ -2,4 +2,7 @@
   <Folder Name="/src/">
     <Project Path="src/SchoolVote.API/SchoolVote.API.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SchoolVote.UnitTests/SchoolVote.UnitTests.csproj" />
+  </Folder>
 </Solution>
