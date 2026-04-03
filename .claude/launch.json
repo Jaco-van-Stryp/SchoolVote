@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "SchoolVote API (Backend)",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--project", "src/SchoolVote.API"],
+      "port": 5020
+    },
+    {
+      "name": "SchoolVote Client (Frontend)",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["start", "--prefix", "schoolvote-client"],
+      "port": 4200
+    }
+  ]
+}
